@@ -1,6 +1,8 @@
 
 services:
   rss-news-collector:
+    build: .
     volumes:
       - .:/app
-    
+    tty: true
+    stdin_open: true
