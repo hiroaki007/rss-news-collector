@@ -1,0 +1,6 @@
+
+services:
+  rss-news-collector:
+    volumes:
+      - .:/app
+    
