@@ -10,12 +10,19 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y cron
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 
 COPY . .
 
+RUN crontab /app/crontab
+
+RUN touch /var/log/cron.log
+
+CMD cron && tail -f /var/log/cron.log
 
 # CMD ["python", "main.py"]
 
